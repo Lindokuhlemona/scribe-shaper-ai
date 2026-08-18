@@ -15,7 +15,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { MarkdownOutput } from "@/components/markdown-output";
 import type { AssistantMode } from "@/lib/assistant-prompts";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -335,10 +337,11 @@ function Index() {
                   {error}
                 </div>
               ) : output ? (
-                <article className="whitespace-pre-wrap text-sm leading-relaxed text-foreground">
-                  {output}
+                <article>
+                  <MarkdownOutput content={output} />
                   {loading && <span className="ml-0.5 animate-pulse">▍</span>}
                 </article>
+
               ) : loading ? (
                 <div className="flex flex-1 items-center justify-center gap-2 text-sm text-muted-foreground">
                   <Loader2 className="h-4 w-4 animate-spin" />
